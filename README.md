@@ -6,10 +6,15 @@
 # 实验环境
 
 本实验在ubuntu22.04上进行，Python选用3.9版本
+
 环境创建过程（Anaconda）：
+
 conda create -n mmdet_py39 python=3.9 anaconda
+
 conda activate mmdet_py39
+
 conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.3 -c pytorch
+
 按照官方文档进行代码下载及依赖项配置：https://mmdetection.readthedocs.io/en/latest/get_started.html
 
 
