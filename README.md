@@ -75,8 +75,10 @@ python demo/image_demo.py demo/my_test_imgs/test5.jpg work_dirs/1_faster-rcnn_r5
 python demo/image_demo.py demo/my_test_imgs/test3.jpg work_dirs/yolov3_d53_8xb8-320-273e_coco/yolov3_d53_8xb8-320-273e_coco.py --weights work_dirs/yolov3_d53_8xb8-320-273e_coco/epoch_273.pth --device cpu
 ```
 
-# 获取Faster-rcnn第一阶段（RPN）的输出
-
+## 获取Faster-rcnn第一阶段（RPN）的输出
+```
+python inference_test_bbox.py
+```
 
 
 
