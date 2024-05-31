@@ -9,24 +9,24 @@
 
 环境创建过程（Anaconda）：
 
+```bash
 conda create -n mmdet_py39 python=3.9 anaconda
-
 conda activate mmdet_py39
-
 conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.3 -c pytorch
+```
 
 按照官方文档进行代码下载及依赖项配置：https://mmdetection.readthedocs.io/en/latest/get_started.html
 
 
 # 实验数据
 
-PASCAL VOC2007，PASCAL VOC2012
+PASCAL VOC2007，PASCAL VOC2012：http://host.robots.ox.ac.uk/pascal/VOC
 
-依次执行voc2coco.py、copy_image_to_coco.py和combine0712.py，将VOC类型数据转为COCO类型数据，并将2007和2012数据合并。
+依次执行`voc2coco.py`、`copy_image_to_coco.py`和`combine0712.py`，将VOC类型数据转为COCO类型数据，并将2007和2012数据合并。
 
 最终实验数据结果（/data文件夹下）
 
-```
+```text
 VOCdevkit    VOC类型数据
     └── VOC2012
     │    ├── Annotations      所有的图像标注信息（XML文件）
@@ -50,7 +50,7 @@ COCO0712      COCO类型数据
 
 # 模型训练
 
-```
+```bash
 cd cv_hw2_task2
 Faster-rcnn：python tools/train.py work_dirs/1_faster-rcnn_r50_fpn_1x_voc/1_faster-rcnn_r50_fpn_1x_voc.py
 Yolov3：python tools/train.py work_dirs/yolov3_d53_8xb8-320-273e_coco/yolov3_d53_8xb8-320-273e_coco.py
@@ -58,7 +58,7 @@ Yolov3：python tools/train.py work_dirs/yolov3_d53_8xb8-320-273e_coco/yolov3_d5
 
 # 查看Tensorboard：(Autodl)
 
-```
+```bash
 ps -ef | grep tensorboard | awk '{print $2}' | xargs kill -9
 tensorboard --port 6007 --logdir ~/mmdetection/work_dirs/1_faster-rcnn_r50_fpn_1x_voc/20240530_203630
 ```
@@ -67,12 +67,12 @@ tensorboard --port 6007 --logdir ~/mmdetection/work_dirs/1_faster-rcnn_r50_fpn_1
 
 ## 测试数据集结果：(以Faster-rcnn为例)
 
-```
+```bash
 python tools/test.py work_dirs/1_faster-rcnn_r50_fpn_1x_voc/1_faster-rcnn_r50_fpn_1x_voc.py work_dirs/1_faster-rcnn_r50_fpn_1x_voc/epoch_12.pth --show --show-dir test_save
 ```
 ## 外来图片结果：
 
-```
+```bash
 # faster-rcnn
 python demo/image_demo.py demo/my_test_imgs/test5.jpg work_dirs/1_faster-rcnn_r50_fpn_1x_voc/1_faster-rcnn_r50_fpn_1x_voc.py --weights work_dirs/1_faster-rcnn_r50_fpn_1x_voc/epoch_12.pth --device cpu
 
@@ -81,9 +81,6 @@ python demo/image_demo.py demo/my_test_imgs/test3.jpg work_dirs/yolov3_d53_8xb8-
 ```
 
 ## 获取Faster-rcnn第一阶段（RPN）的输出
-```
+```bash
 python inference_test_bbox.py
 ```
-
-
-
